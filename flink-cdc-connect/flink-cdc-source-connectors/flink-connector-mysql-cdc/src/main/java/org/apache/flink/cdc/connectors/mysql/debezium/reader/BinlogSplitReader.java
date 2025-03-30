@@ -248,7 +248,7 @@ public class BinlogSplitReader implements DebeziumReader<SourceRecords, MySqlSpl
             if (RecordUtils.isTableChangeRecord(sourceRecord)) {
                 TableId tableId = RecordUtils.getTableId(sourceRecord);
                 BinlogOffset position = RecordUtils.getBinlogPosition(sourceRecord);
-                maxSplitHighWatermarkMap.put(tableId,position);
+                maxSplitHighWatermarkMap.put(tableId, position);
                 return capturedTableFilter.isIncluded(tableId);
             } else {
                 // Not related to changes in table structure, like `CREATE/DROP DATABASE`, skip it
